@@ -1,10 +1,13 @@
+import home from '@/modules/home/home.routes';
+
 const routes = [
-    {
-        path:'*',
-        redirect:'/'
-    }
-]
+  {
+    path: '*',
+    redirect: '/',
+  },
+];
 
 export default [
-
+  ...routes,
+  ...home,
 ];

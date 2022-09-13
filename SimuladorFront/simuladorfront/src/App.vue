@@ -1,17 +1,16 @@
 <template>
- 
-  <router-view :key="$router.path"></router-view>
+  <div>
+    <router-view key="$route.path"></router-view>
+  </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
+  name: 'SimuladorApp',
   components: {
-  
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -20,7 +19,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #0b0f14;
   margin-top: 60px;
 }
 </style>

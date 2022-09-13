@@ -1,5 +1,5 @@
 {
-  "name": "@maya/biblioteca-front",
+  "name": "simuladorfront",
   "version": "0.1.0",
   "private": true,
   "scripts": {

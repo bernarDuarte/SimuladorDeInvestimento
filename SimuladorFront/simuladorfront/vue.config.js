@@ -24,6 +24,7 @@ module.exports = {
         },
       },
     };
+
     config.resolve = {
       ...config.resolve,
       alias: {
@@ -32,10 +33,12 @@ module.exports = {
         src: resolve('src'),
       },
     };
+
     config.performance = {
       ...config.performance,
       hints: false,
     };
+
     config.optimization = {
       ...config.optimization,
       splitChunks: {
