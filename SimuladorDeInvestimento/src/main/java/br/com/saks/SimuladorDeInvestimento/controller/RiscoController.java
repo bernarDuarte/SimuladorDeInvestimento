@@ -2,6 +2,7 @@ package br.com.saks.SimuladorDeInvestimento.controller;
 
 import br.com.saks.SimuladorDeInvestimento.model.Risco;
 import br.com.saks.SimuladorDeInvestimento.repository.RiscoRepository;
+import br.com.saks.SimuladorDeInvestimento.repository.TipoInvestimentoRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,20 @@ public class RiscoController {
     @Autowired
     private RiscoRepository RiscoRepository;
     
+    @Autowired
+    private TipoInvestimentoRepository tipoInvestimentoRepository;
+    
     @GetMapping
     public List<Risco> listarTodos() {
-        return RiscoRepository.findAll(Sort.by(Sort.Order.asc("status")));
+        return RiscoRepository.findAll();
     }
     
     @GetMapping(value="/{id}")
-    public Optional<Risco> listarPeloId(@PathVariable Long id) {
-        return RiscoRepository.findById(id);
+    public Risco listarPeloId(@PathVariable Long id) {
+        Optional<Risco> risco = RiscoRepository.findById(id);
+        Risco riscoResponse = risco.get();
+        riscoResponse.setTipoInvestimento(tipoInvestimentoRepository.findAll());
+        return riscoResponse;
     }
     
     @PostMapping
@@ -43,7 +50,7 @@ public class RiscoController {
         return RiscoRepository.findById(id)
                 .map(record -> {
                     record.setNome(Risco.getNome());
-                    record.setTipoInvestimos(Risco.getTipoInvestimos());
+                    record.setTipoInvestimento(Risco.getTipoInvestimento());
                     Risco RiscoUpdated = RiscoRepository.save(record);
                     return ResponseEntity.ok().body(RiscoUpdated);
                 }).orElse(ResponseEntity.notFound().build());

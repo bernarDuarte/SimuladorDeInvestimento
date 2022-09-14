@@ -4,20 +4,20 @@
       <top-bar />
     </el-header>
     <el-main>
-      <container :size="containerSize">
-        <div class="biblioteca-single-content-layout">
-          <div class="biblioteca-single-content-layout__main">
+      <el-container :size="containerSize">
+        <div class="simulador-single-content-layout">
+          <div class="simulador-single-content-layout__main">
             <slot name="content" />
           </div>
         </div>
-      </container>
+      </el-container>
     </el-main>
   </el-container>
 </template>
 
 <script>
 export default {
-  name: 'BibliotecaSingleContentLayout',
+  name: 'SimuladorSingleContentLayout',
   props: {
     containerSize: String,
   },
@@ -29,13 +29,13 @@ export default {
 @import '@/scss/bootstrap/container';
 @import '@/scss/bootstrap/mixins';
 
-.biblioteca-single-content-layout {
+.simulador-single-content-layout {
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
-  .biblioteca-single-content-layout__main {
+  .simulador-single-content-layout__main {
     width: 100%;
     padding-top: $padding-lg;
 
@@ -43,5 +43,9 @@ export default {
       padding: $padding-lg;
     }
   }
+}
+
+header.el-header{
+  background-color: #121026;
 }
 </style>

@@ -23,6 +23,6 @@ public class Risco implements Serializable {
      
     @JsonIgnore
     @OneToMany(mappedBy = "risco")
-    private List<TipoInvestimento> tipoInvestimos;
+    private List<TipoInvestimento> tipoInvestimento;
     
 }

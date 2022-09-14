@@ -28,9 +28,17 @@ import BibliotecaSmall from '@/components/typography/Small.vue';
 import BibliotecaHeader from '@/components/typography/Header.vue';
 */
 import TopBar from '@/components/topbar/TopBar.vue';
+import Input from '@/components/input/input.vue';
+import TextArea from '@/components/input/textArea.vue';
+import SimuladorButton from '@/components/button/button.vue';
+import Forms from '@/components/forms/forms.vue';
 
 const components = {
   TopBar,
+  Input,
+  TextArea,
+  SimuladorButton,
+  Forms,
 };
 
 Object.entries(components).forEach(([name, component]) => Vue.component(name, component));
