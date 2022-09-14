@@ -13,10 +13,22 @@
             <div class="row justify-content-end">
               <forms v-slot="{ validate }" :submit="submitLogin">
                 <div class="col-10 input-group-lg m-5 mt-5 mb-5 justify-content-end">
-                  <input type="text" placeholder="Insira seu Email" class="form-control rounded-5">
+                  <input
+                    v-model="username"
+                    type="text"
+                    placeholder="Insira seu Email"
+                    class="form-control rounded-5"
+                    name="e-mail"
+                    :focus="true" />
                 </div>
                 <div class="col-10 input-group-lg m-5 mt-5 mb-3">
-                  <input type="password" placeholder="Insira sua Senha" class="form-control rounded-5">
+                  <input
+                    v-model="password"
+                    type="password"
+                    placeholder="Insira sua Senha"
+                    class="form-control rounded-5"
+                    name="senha"
+                    :focus="true" />
                 </div>
                 <div>
                   <simulador-button

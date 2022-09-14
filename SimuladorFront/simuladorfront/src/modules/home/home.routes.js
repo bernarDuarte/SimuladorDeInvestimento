@@ -4,6 +4,6 @@ export default [
   {
     path: HOME_URL.path,
     redirect: '',
-    component: () => import('@/modules/auth/view/login.vue'),
+    component: () => import('@/modules/home/PaginaInicial.vue'),
   },
 ];
