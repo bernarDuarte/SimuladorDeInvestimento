@@ -57,6 +57,10 @@
 
 import Forms from '@/components/forms/forms.vue';
 import SimuladorButton from '@/components/button/button.vue';
+import * as authStore from '@/modules/auth/auth.store';
+import { passwordLogin } from '@/modules/auth/auth.service';
+import { goToBasePage } from '@/router/route.service';
+import { toastError } from '@/services/toastService';
 
 export default {
   name: 'LoginView',
@@ -66,6 +70,28 @@ export default {
   },
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      username: '',
+      password: '',
+    };
+  },
+  beforeCreate() {
+    if (authStore.getters.getToken()) {
+      goToBasePage();
+    }
+  },
+  methods: {
+    submitLogin() {
+      passwordLogin(this.username, this.password)
+        .then(goToBasePage)
+        .catch(err => {
+          if (err.response.data.message === 'USUARIO_INCORRETO') {
+            toastError('E-mail e/ou senha incorretos');
+          }
+        });
+    },
   },
 };
 </script>
