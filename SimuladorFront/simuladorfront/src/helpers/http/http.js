@@ -14,7 +14,7 @@ const defaultHeaders = {
 
 const prefixBaseUrl = () => {
   if (['localhost', '127.0.0.1'].includes(window.location.hostname)) return '';
-  return 'https://api.imobiliaria.com.br';
+  return 'https://api.SimuladorTipoInvestimento.com.br';
 };
 
 if (token) {

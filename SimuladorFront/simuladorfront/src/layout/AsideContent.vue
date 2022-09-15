@@ -5,7 +5,7 @@
       </top-bar>
     </el-header>
     <el-main>
-      <simulador-container :size="containerSize">
+      <div>
         <div class="simulador-aside-content-layout">
           <div class="simulador-aside-content-layout__sidebar">
             <slot name="aside" />
@@ -14,7 +14,7 @@
             <slot name="content" />
           </div>
         </div>
-      </simulador-container>
+      </div>
     </el-main>
   </el-container>
 </template>

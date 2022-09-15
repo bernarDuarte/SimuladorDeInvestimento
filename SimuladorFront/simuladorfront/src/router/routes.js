@@ -1,4 +1,5 @@
 import home from '@/modules/home/home.routes';
+import auth from '@/modules/auth/auth.routes';
 
 const routes = [
   {
@@ -10,4 +11,5 @@ const routes = [
 export default [
   ...routes,
   ...home,
+  ...auth,
 ];

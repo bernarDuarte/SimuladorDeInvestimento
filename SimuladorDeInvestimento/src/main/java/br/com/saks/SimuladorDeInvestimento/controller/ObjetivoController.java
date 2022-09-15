@@ -3,6 +3,7 @@ package br.com.saks.SimuladorDeInvestimento.controller;
 import br.com.saks.SimuladorDeInvestimento.model.Objetivo;
 import br.com.saks.SimuladorDeInvestimento.repository.ObjetivoRepository;
 import br.com.saks.SimuladorDeInvestimento.repository.TipoInvestimentoRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,46 +23,58 @@ import org.springframework.web.bind.annotation.RestController;
 public class ObjetivoController { 
     
     @Autowired
-    private ObjetivoRepository ObjetivoRepository;
+    private ObjetivoRepository objetivoRepository;
     
     @Autowired
     private TipoInvestimentoRepository tipoInvestimentoRepository;
     
     @GetMapping
     public List<Objetivo> listarTodos() {
-        return ObjetivoRepository.findAll();
+        return objetivoRepository.findAll();
     }
     
     
     @GetMapping(value="/{id}")
     public Optional<Objetivo> listarPeloId(@PathVariable Long id) {
-        return ObjetivoRepository.findById(id);
+        return objetivoRepository.findById(id);
+    }
+    
+    @GetMapping(value="/usuario/{id}")
+    public ArrayList<Objetivo> listaByObjetivo (@PathVariable Long id) {
+        ArrayList<Objetivo> objetivo = new ArrayList<Objetivo>();
+        List<Objetivo> objetivoResponse = objetivoRepository.findAll();
+        for(Objetivo o : objetivoResponse){
+            if(o.getUsuario().getId()==id){
+                objetivo.add(o);
+            }
+        }
+        return objetivo;
     }
     
     @PostMapping
     public Objetivo adicionar(@RequestBody Objetivo objetivo) {
-        return ObjetivoRepository.save(objetivo);
+        return objetivoRepository.save(objetivo);
     }
            
     @PutMapping(value="/{id}")
     public ResponseEntity editar(@PathVariable Long id, @RequestBody Objetivo Objetivo) {
-        return ObjetivoRepository.findById(id)
+        return objetivoRepository.findById(id)
                 .map(record -> {
                     record.setNome(Objetivo.getNome());
                     record.setEntrada(Objetivo.getEntrada());
                     record.setObjetivo(Objetivo.getObjetivo());
                     record.setTipoInvestimento(Objetivo.getTipoInvestimento());
                     record.setUsuario(Objetivo.getUsuario());
-                     Objetivo ObjetivoUpdated = ObjetivoRepository.save(record);
+                     Objetivo ObjetivoUpdated = objetivoRepository.save(record);
                     return ResponseEntity.ok().body(ObjetivoUpdated);
                 }).orElse(ResponseEntity.notFound().build());
     }
     
     @DeleteMapping(value="/{id}")
     public ResponseEntity deletar(@PathVariable Long id) {
-        return ObjetivoRepository.findById(id)
+        return objetivoRepository.findById(id)
                 .map(record-> {
-                    ObjetivoRepository.deleteById(id);
+                    objetivoRepository.deleteById(id);
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
