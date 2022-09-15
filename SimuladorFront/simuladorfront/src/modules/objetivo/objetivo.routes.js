@@ -10,7 +10,7 @@ export default [
 
       {
         ...OBJETIVO_URL.criar,
-        component: () => import('@/components/HelloWorld.vue'),
+        component: () => import('@/modules/objetivo/view/ObjetivoEditPage.vue'),
       },
       {
         ...OBJETIVO_URL.view,

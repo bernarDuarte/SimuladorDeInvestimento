@@ -6,7 +6,7 @@ export default [
     component: () => import('@/modules/auth/view/login.vue'),
   },
   {
-    ...AUTH_URL.register,
+    ...AUTH_URL.registrar,
     component: () => import('@/modules/auth/view/registration.vue'),
   },
 ];

@@ -59,6 +59,7 @@ public class UsuarioController {
     public Usuario usuario(@RequestBody Usuario usuario) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         usuario.setSenha(encoder.encode(usuario.getSenha()));
+        usuario.setStatus(1);
         return usuarioRepository.save(usuario);
     }
     

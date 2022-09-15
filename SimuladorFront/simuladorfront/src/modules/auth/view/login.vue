@@ -41,7 +41,7 @@
               </forms>
             </div>
             <div class="col-10 mt-5">
-              <p>Não possui conta? <u>Registrar</u></p>
+              <p>Não possui conta? </p><router-link class="color--primary" to="/registrar">Criar conta</router-link>
             </div>
             <div class="col-18 justify-content-center">
               <img class="imagem-saks" alt="imagem-saks" src="../../../assets/saks.png">
@@ -59,8 +59,8 @@ import Forms from '@/components/forms/forms.vue';
 import SimuladorButton from '@/components/button/button.vue';
 import * as authStore from '@/modules/auth/auth.store';
 import { passwordLogin } from '@/modules/auth/auth.service';
-import { goToBasePage } from '@/router/route.service';
 import { toastError } from '@/services/toastService';
+import { goToBasePage } from '@/router/route.service';
 
 export default {
   name: 'LoginView',

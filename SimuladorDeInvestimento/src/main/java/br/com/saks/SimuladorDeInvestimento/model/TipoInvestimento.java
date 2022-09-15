@@ -32,6 +32,9 @@ public class TipoInvestimento {
     private List<Objetivo> objetivos;
     
     @Column(nullable = false)
+    private Double rendimento;
+    
+    @Column(nullable = false)
     private int status;
     
 }
