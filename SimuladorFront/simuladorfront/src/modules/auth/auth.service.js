@@ -38,5 +38,7 @@ function formatarDados(info) {
     nome: info.nome,
     senha: info.senha,
     email: info.email,
+    telefone: info.telefone,
+    status: info.status,
   };
 }

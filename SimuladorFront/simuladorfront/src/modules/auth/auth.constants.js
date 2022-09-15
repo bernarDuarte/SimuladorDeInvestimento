@@ -3,9 +3,9 @@ export const AUTH_URL = Object.freeze({
     name: 'auth.login',
     path: '/login',
   },
-  register: {
-    name: 'auth.register',
-    path: '/cadastro',
+  registrar: {
+    name: 'auth.registrar',
+    path: '/registrar',
   },
 });
 

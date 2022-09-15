@@ -36,6 +36,7 @@ public class Objetivo {
     @JoinColumn(name="objetivos")
     private Usuario usuario;
     
-    
+    @Column(length = 10, nullable = false)
+    private int tempo;
     
 }

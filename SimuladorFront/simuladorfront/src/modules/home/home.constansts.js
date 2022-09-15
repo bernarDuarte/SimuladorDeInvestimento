@@ -1,8 +1,8 @@
 export const HOME_URL = Object.freeze({
   path: '/',
-  name: 'Home',
+  name: 'home',
   components: {
-    path: '/components',
+    path: '/components/:id',
     name: 'home.components',
   },
 });

@@ -16,9 +16,30 @@
         </button>
         <div id="ftco-nav" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-3 ml-lg-auto mr-md-3">
-            <li class="nav-item active"><a href="#" class="nav-link">Objetivos</a></li>
-            <li class="nav-item "><a href="#" class="nav-link">Meu Perfil</a></li>
-            <li class="nav-item "><a href="#" class="nav-link">Sair</a></li>
+            <li class="nav-item active ml-2">
+              <simulador-button
+                class="btn text-primary"
+                native-type="submit"
+                @click="onObjetivo">
+                Objetivos
+              </simulador-button>
+            </li>
+            <li class="nav-item ml-2 ">
+              <simulador-button
+                class="btn text-primary"
+                native-type="submit"
+                @click="onHome">
+                Meu Perfil
+              </simulador-button>
+            </li>
+            <li class="nav-item ml-2">
+              <simulador-button
+                class="btn text-primary"
+                native-type="submit"
+                @click="onLogout">
+                Sair
+              </simulador-button>
+            </li>
           </ul>
         </div>
       </div>
@@ -28,8 +49,31 @@
 </template>
 
 <script>
+
+import { removeCookie } from '@/helpers/cookies/cookie';
+import { goToLoginPage } from '@/router/route.service';
+import { goToCreateObjetivo } from '@/modules/objetivo/objetivo.routes';
+import { goToOpenHome } from '@/modules/home/home.routes';
+
 export default {
   name: 'TopBar',
+  data() {
+    return {
+    };
+  },
+  methods: {
+    removeCookie,
+    onLogout() {
+      removeCookie('session_id');
+      goToLoginPage();
+    },
+    onObjetivo() {
+      goToCreateObjetivo(this.$router);
+    },
+    onHome() {
+      goToOpenHome(this.$router);
+    },
+  },
 };
 
 </script>
